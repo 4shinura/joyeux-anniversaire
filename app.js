@@ -1,7 +1,3 @@
-// =============================================================================
-// LOGIQUE INTERACTIVE - SITE D'ANNIVERSAIRE DE CAMILLE
-// =============================================================================
-
 document.addEventListener('DOMContentLoaded', () => {
   initBackgroundCanvas();
   initDynamicContent();
@@ -11,9 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initGiftBox();
 });
 
-// -----------------------------------------------------------------------------
-// 1. PARTICULES & COEURS FLOTTANTS (CANVAS)
-// -----------------------------------------------------------------------------
 function initBackgroundCanvas() {
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
@@ -92,18 +85,13 @@ function initBackgroundCanvas() {
   animate();
 }
 
-// -----------------------------------------------------------------------------
-// 2. INJECTION DES CONTENUS DYNAMIQUES
-// -----------------------------------------------------------------------------
 function initDynamicContent() {
   if (typeof siteConfig === 'undefined') return;
 
-  // Prénoms & Titres
   document.querySelectorAll('[data-bind="recipientName"]').forEach(el => el.textContent = siteConfig.recipientName);
   document.querySelectorAll('[data-bind="partnerName"]').forEach(el => el.textContent = siteConfig.partnerName);
   document.querySelectorAll('[data-bind="age"]').forEach(el => el.textContent = siteConfig.age);
 
-  // Hero
   const heroBadge = document.getElementById('hero-badge');
   const heroTitle = document.getElementById('hero-title');
   const heroSubtitle = document.getElementById('hero-subtitle');
@@ -114,7 +102,6 @@ function initDynamicContent() {
   if (heroSubtitle && siteConfig.hero.subtitle) heroSubtitle.textContent = siteConfig.hero.subtitle;
   if (heroBtn && siteConfig.hero.buttonText) heroBtn.textContent = siteConfig.hero.buttonText;
 
-  // Détails du Cadeau
   const giftBadge = document.getElementById('ticket-badge');
   const giftTitle = document.getElementById('ticket-title');
   const giftDest = document.getElementById('ticket-destination');
@@ -137,7 +124,6 @@ function initDynamicContent() {
   if (giftTimeline) giftTimeline.textContent = siteConfig.gift.timelineText;
   if (giftSweetMsg) giftSweetMsg.textContent = siteConfig.gift.sweetMessage;
 
-  // Prestations incluses dans le ticket VIP
   const listContainer = document.getElementById('ticket-included-list');
   if (listContainer && siteConfig.gift.includedList) {
     listContainer.innerHTML = siteConfig.gift.includedList
@@ -146,9 +132,6 @@ function initDynamicContent() {
   }
 }
 
-// -----------------------------------------------------------------------------
-// 3. COMPTEUR D'AMOUR (JOURS UNIQUEMENT)
-// -----------------------------------------------------------------------------
 function initLoveCounter() {
   if (typeof siteConfig === 'undefined' || !siteConfig.relationshipStartDate) return;
 
@@ -166,9 +149,6 @@ function initLoveCounter() {
   setInterval(update, 60000);
 }
 
-// -----------------------------------------------------------------------------
-// 4. TIMELINE & POLAROIDS
-// -----------------------------------------------------------------------------
 function initTimeline() {
   const container = document.getElementById('timeline-container');
   if (!container || typeof siteConfig === 'undefined') return;
@@ -190,9 +170,6 @@ function initTimeline() {
   }).join('');
 }
 
-// -----------------------------------------------------------------------------
-// 5. MINI-QUIZ COMPLICE (CONDITION STRICTE POUR AFFICHER LE CADEAU)
-// -----------------------------------------------------------------------------
 let currentQuestionIndex = 0;
 let quizCompleted = false;
 
@@ -219,7 +196,6 @@ function renderQuestion() {
   if (progressEl) progressEl.style.width = `${progressPercent}%`;
   if (stepEl) stepEl.textContent = `Question ${currentQuestionIndex + 1} / ${totalQuestions}`;
 
-  // S'assurer que le squelette HTML du quiz est en place
   if (quizCard) {
     quizCard.innerHTML = `
       <h3 id="quiz-question-title" class="font-serif text-xl sm:text-2xl font-bold text-gray-800 text-center">
@@ -244,7 +220,6 @@ window.handleOptionClick = function(optionIndex) {
   const buttons = document.querySelectorAll('.quiz-option');
   const feedbackContainer = document.getElementById('quiz-feedback');
 
-  // Désactiver les boutons pour éviter les doubles clics
   buttons.forEach(b => b.disabled = true);
 
   if (buttons[optionIndex]) {
@@ -259,7 +234,6 @@ window.handleOptionClick = function(optionIndex) {
     feedbackContainer.classList.remove('hidden');
 
     if (option.isCorrect) {
-      // RÉPONSE CORRECTE : On permet de passer à la question suivante
       const isLastQuestion = currentQuestionIndex === siteConfig.quiz.length - 1;
       feedbackContainer.innerHTML = `
         <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 animate-fade-in flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
@@ -273,7 +247,6 @@ window.handleOptionClick = function(optionIndex) {
         </div>
       `;
     } else {
-      // MAUVAISE RÉPONSE : On impose de recommencer depuis le début pour voir le cadeau !
       feedbackContainer.innerHTML = `
         <div class="p-5 rounded-xl bg-rose-50 border-2 border-rose-300 text-rose-900 animate-fade-in flex flex-col items-center text-center gap-3 shadow-md">
           <div class="space-y-1">
@@ -336,7 +309,6 @@ function showQuizFinished() {
     `;
   }
 
-  // RÉVÉLER LA SECTION CADEAU (UNIQUEMENT APRÈS LA RÉUSSITE COMPLÈTE DU QUIZ)
   const giftSection = document.getElementById('gift-section');
   if (giftSection) {
     giftSection.classList.remove('hidden');
@@ -348,9 +320,6 @@ function showQuizFinished() {
   triggerConfetti();
 }
 
-// -----------------------------------------------------------------------------
-// 6. BOÎTE CADEAU MYSTÈRE & GRAND DÉVOILEMENT
-// -----------------------------------------------------------------------------
 function initGiftBox() {
   const giftBox = document.getElementById('interactive-gift-box');
   const modal = document.getElementById('vip-ticket-modal');
@@ -377,7 +346,6 @@ function initGiftBox() {
 }
 
 function openGiftSurprise() {
-  // Sécurité : ne s'ouvre que si le quiz a été complété sans faute
   if (!quizCompleted) return;
 
   const modal = document.getElementById('vip-ticket-modal');
@@ -390,7 +358,6 @@ function openGiftSurprise() {
   }
 }
 
-// Feux d'artifice de confettis avec canvas-confetti
 function triggerConfetti() {
   if (typeof confetti === 'function') {
     confetti({

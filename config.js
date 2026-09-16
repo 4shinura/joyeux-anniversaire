@@ -1,18 +1,10 @@
-// =============================================================================
-// CONFIGURATION PERSONNALISÉE - SITE ANNIVERSAIRE 18 ANS DE CAMILLE
-// =============================================================================
-// Tu peux modifier facilement tous les textes, questions, photos et détails
-// sans toucher au code HTML ou CSS.
-
 const siteConfig = {
-  // Informations Générales
   partnerName: "Ton amoureux", 
   recipientName: "Camille",
   age: 18,
   
   relationshipStartDate: "2025-08-27",
 
-  // 1. En-tête / Hero
   hero: {
     badge: "❤️ 18 Ans de mon amoureuse 💃",
     title: "Joyeux Anniversaire Camille !",
@@ -20,7 +12,6 @@ const siteConfig = {
     buttonText: "Découvrir la surprise 💖"
   },
 
-  // 2. Rétrospective & Galerie Souvenirs
   timeline: [
     {
       title: "Il y a un an..",
@@ -52,8 +43,6 @@ const siteConfig = {
     }
   ],
 
-  // 3. Mini-Quiz des Amoureux
-  // Chaque bonne ou mauvaise réponse affiche un petit message personnalisé !
   quiz: [
     {
       id: 1,
@@ -92,7 +81,6 @@ const siteConfig = {
     }
   ],
 
-  // 4. Dévoilement du Cadeau
   gift: {
     badge: "Cadeau",
     title: "Une Escapade Magique en Amoureux",

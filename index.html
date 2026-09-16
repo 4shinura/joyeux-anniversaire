@@ -5,44 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joyeux 18 ans mon amour ! 💕</title>
   
-  <!-- Polices Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Canvas Confetti pour les feux d'artifice de fête -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- Feuille de styles personnalisée -->
   <link rel="stylesheet" href="style.css">
   
-  <!-- Favicon coeur -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
 </head>
 <body class="relative selection:bg-rose-200 selection:text-rose-900">
 
-  <!-- Canvas des cœurs et étincelles animées en fond -->
   <canvas id="bg-canvas"></canvas>
 
-  <!-- Contenu Principal -->
   <main class="site-content max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 space-y-24">
 
-    <!-- =====================================================================
-         SECTION 1 : HERO / ACCUEIL
-         ===================================================================== -->
     <section class="text-center pt-8 md:pt-14 space-y-8">
       
-      <!-- Badge mignon -->
       <div class="inline-block">
         <span id="hero-badge" class="hero-badge inline-flex items-center px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold text-rose-700 tracking-wide uppercase">
           ✨ 18 Ans & Tellement de Bonheur ✨
         </span>
       </div>
 
-      <!-- Titre principal -->
       <div class="space-y-4 max-w-3xl mx-auto">
         <h1 id="hero-title" class="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
           Joyeux Anniversaire <span class="text-gradient" data-bind="recipientName">Camille</span> !
@@ -52,14 +40,12 @@
         </p>
       </div>
 
-      <!-- Compteur d'amour (Jours ensemble) -->
       <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-md mx-auto shadow-sm text-center">
         <p class="text-xs font-bold uppercase tracking-wider text-rose-500 mb-2">Notre aventure à deux</p>
         <span id="counter-days" class="block text-4xl sm:text-5xl font-extrabold text-gradient mb-1">365+</span>
         <span class="text-xs sm:text-sm text-gray-600 font-medium">Jours d'amour partagés 💕</span>
       </div>
 
-      <!-- Bouton d'entrée -->
       <div>
         <a href="#memories-section" id="hero-cta-btn" class="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold rounded-full shadow-lg hover:shadow-rose-300/50 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
           <span>Découvrir la surprise</span>
@@ -68,9 +54,6 @@
       </div>
     </section>
 
-    <!-- =====================================================================
-         SECTION 2 : NOTRE HISTOIRE & POLAROIDS
-         ===================================================================== -->
     <section id="memories-section" class="scroll-mt-12 space-y-10">
       <div class="text-center space-y-3">
         <span class="text-xs font-bold uppercase tracking-wider text-rose-500">1 an et presque 1 mois</span>
@@ -80,15 +63,10 @@
         </p>
       </div>
 
-      <!-- Grille des Polaroids (Remplie dynamiquement via config.js) -->
       <div id="timeline-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 pt-4">
-        <!-- Les polaroids sont insérés ici -->
       </div>
     </section>
 
-    <!-- =====================================================================
-         SECTION 3 : LE MINI-QUIZ COMPLICE
-         ===================================================================== -->
     <section id="quiz-section" class="scroll-mt-12 space-y-8">
       <div class="text-center space-y-3">
         <span class="text-xs font-bold uppercase tracking-wider text-rose-500">Ton cadeau est vérouillé 🔐</span>
@@ -98,10 +76,8 @@
         </p>
       </div>
 
-      <!-- Carte du Quiz -->
       <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-2xl mx-auto shadow-sm">
         
-        <!-- Barre de progression -->
         <div class="space-y-2 mb-6">
           <div class="flex justify-between text-xs font-semibold text-gray-500">
             <span id="quiz-step">Question 1 / 4</span>
@@ -112,28 +88,21 @@
           </div>
         </div>
 
-        <!-- Contenu de la question active -->
         <div id="quiz-card" class="space-y-6">
           <h3 id="quiz-question-title" class="font-serif text-xl sm:text-2xl font-bold text-gray-800 text-center">
             Chargement de la question...
           </h3>
 
           <div id="quiz-options-container" class="space-y-3">
-            <!-- Options injectées par app.js -->
           </div>
 
           <div id="quiz-feedback" class="hidden">
-            <!-- Message de feedback injecté par app.js -->
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- =====================================================================
-         SECTION 4 : LA BOÎTE CADEAU & LE GRAND DÉVOILEMENT
-         (Affichée UNIQUEMENT après validation complète du quiz)
-         ===================================================================== -->
     <section id="gift-section" class="scroll-mt-12 space-y-8 text-center transition-all duration-700 hidden">
       
       <div class="space-y-3">
@@ -144,33 +113,23 @@
         </p>
       </div>
 
-      <!-- Boîte Cadeau Interactive -->
       <div class="gift-box-wrapper py-6 inline-block" id="interactive-gift-box" title="Clique pour ouvrir !">
         <div class="gift-box-container animate-gift relative">
-          <!-- Illustration stylisée du paquet cadeau -->
           <div class="w-36 h-36 sm:w-44 sm:h-44 mx-auto bg-gradient-to-tr from-rose-500 to-pink-600 rounded-3xl shadow-2xl flex items-center justify-center relative overflow-hidden border-4 border-rose-300">
-            <!-- Rubans dorés -->
             <div class="absolute inset-y-0 w-8 bg-amber-300/80 shadow-inner"></div>
             <div class="absolute inset-x-0 h-8 bg-amber-300/80 shadow-inner"></div>
-            <!-- Noeud papillon -->
             <div class="absolute -top-3 text-4xl">🎀</div>
-            <!-- Étoiles brillantes -->
             <span class="text-white text-5xl relative z-10 drop-shadow-md">✨</span>
           </div>
-          <!-- Bulle incitative -->
           <div class="mt-4 inline-block px-5 py-2 bg-white rounded-full shadow-md text-xs sm:text-sm font-bold text-rose-600 border border-rose-100">
             👆 Clique pour ouvrir la boîte !
           </div>
         </div>
       </div>
 
-      <!-- ===================================================================
-           LE BILLET VIP / PASSEPORT DU CADEAU (Grand Dévoilement)
-           =================================================================== -->
       <div id="vip-ticket-modal" class="hidden text-left max-w-3xl mx-auto pt-6">
         <div class="vip-ticket rounded-3xl p-6 sm:p-10 text-white shadow-2xl space-y-8">
           
-          <!-- En-tête du Billet VIP -->
           <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-700/60 pb-6">
             <div>
               <span id="ticket-badge" class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-amber-500/20 text-amber-300 border border-amber-500/40 mb-2">
@@ -186,10 +145,8 @@
             </div>
           </div>
 
-          <!-- Destinations & Détails du Cadeau -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <!-- Carte 1 : La Vallée des Singes -->
             <div class="bg-gray-800/80 rounded-2xl overflow-hidden border border-gray-700/80 flex flex-col justify-between">
               <div class="h-44 overflow-hidden relative">
                 <img id="ticket-destination-img" src="assets/images/monkey-park.svg" alt="La Vallée des Singes" class="w-full h-full object-cover">
@@ -206,7 +163,6 @@
               </div>
             </div>
 
-            <!-- Carte 2 : Chambre d'Hôte -->
             <div class="bg-gray-800/80 rounded-2xl overflow-hidden border border-gray-700/80 flex flex-col justify-between">
               <div class="h-44 overflow-hidden relative">
                 <img id="ticket-lodging-img" src="assets/images/bed-breakfast.svg" alt="Chambre d'hôte" class="w-full h-full object-cover">
@@ -225,10 +181,8 @@
 
           </div>
 
-          <!-- Ligne perforée de ticket de cinéma / boarding pass -->
           <div class="ticket-divider pt-6"></div>
 
-          <!-- Détails & Calendrier du séjour -->
           <div class="bg-gray-900/60 rounded-2xl p-5 border border-gray-800 space-y-4">
             <div class="flex items-start space-x-3">
               <span class="text-2xl">📅</span>
@@ -240,16 +194,13 @@
               </div>
             </div>
 
-            <!-- Liste des prestations incluses -->
             <div class="pt-2 border-t border-gray-800">
               <h5 class="text-xs uppercase tracking-wider text-gray-400 font-semibold mb-2">Ce qui est inclus dans le cadeau :</h5>
               <ul id="ticket-included-list" class="text-xs sm:text-sm text-gray-300 space-y-1.5">
-                <!-- Inclus dynamique -->
               </ul>
             </div>
           </div>
 
-          <!-- Message doux personnel -->
           <div class="p-4 rounded-2xl bg-gradient-to-r from-rose-950/40 to-pink-950/40 border border-rose-500/30 text-center">
             <p id="ticket-sweet-msg" class="font-serif italic text-sm sm:text-base text-rose-200">
               "Pour tes 18 ans, je voulais t'offrir un moment inoubliable, hors du temps, pour rire, s'émerveiller et profiter rien que tous les deux. Joyeux 18 ans mon amour ! ❤️"
@@ -257,7 +208,6 @@
             <p class="text-xs text-rose-400 font-medium mt-2">- <span data-bind="partnerName">Ton amoureux</span></p>
           </div>
 
-          <!-- Actions du billet (Imprimer / Télécharger / Fermer) -->
           <div class="flex flex-wrap items-center justify-between gap-4 pt-2 no-print">
             <button id="close-ticket-modal" class="px-4 py-2 text-xs text-gray-400 hover:text-white transition-colors cursor-pointer">
               Replier la carte ✖
@@ -269,9 +219,6 @@
 
     </section>
 
-    <!-- =====================================================================
-         FOOTER
-         ===================================================================== -->
     <footer class="text-center pt-12 pb-6 border-t border-rose-200/60 space-y-2">
       <p class="text-xs sm:text-sm text-gray-600 font-medium">
         Créé avec amour pour les 18 ans de ma chérie 💕
@@ -283,7 +230,6 @@
 
   </main>
 
-  <!-- Fichier de configuration & Script principal -->
   <script src="config.js"></script>
   <script src="app.js"></script>
 </body>
