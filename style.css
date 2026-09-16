@@ -1,0 +1,305 @@
+/* ==========================================================================
+   STYLES DU SITE D'ANNIVERSAIRE DE CAMILLE
+   Design : Romantique, Élégant, Moderne, Festif & 100% Responsive
+   ========================================================================== */
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-handwriting: 'Caveat', cursive;
+  
+  --color-primary: #f43f5e;
+  --color-primary-light: #ffe4e6;
+  --color-primary-dark: #be123c;
+  --color-gold: #f59e0b;
+  --color-gold-light: #fef3c7;
+  --color-bg-start: #fff5f5;
+  --color-bg-end: #fdf2f8;
+  --color-text-dark: #1f2937;
+  --color-text-muted: #6b7280;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, #fff5f5 0%, #fff1f2 40%, #fdf2f8 100%);
+  color: var(--color-text-dark);
+  overflow-x: hidden;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting);
+}
+
+/* Floating canvas */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Container & Sections */
+.site-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hero Badge Glow */
+.hero-badge {
+  background: linear-gradient(135deg, #ffe4e6, #fce7f3);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.12);
+  animation: floatSlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatSlow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+/* Gradient Text */
+.text-gradient {
+  background: linear-gradient(135deg, #e11d48 0%, #db2777 50%, #9333ea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Polaroid Card Effect */
+.polaroid-card {
+  background: #ffffff;
+  padding: 14px 14px 22px 14px;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+.polaroid-card:hover {
+  transform: scale(1.04) rotate(0deg) !important;
+  box-shadow: 0 20px 35px -5px rgba(244, 63, 94, 0.2), 0 10px 15px -5px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+.polaroid-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 24px;
+  background: rgba(254, 240, 138, 0.7);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border-left: 2px dashed rgba(0,0,0,0.1);
+  border-right: 2px dashed rgba(0,0,0,0.1);
+}
+
+/* Wiggle animation for Gift Box */
+.gift-box-wrapper {
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.gift-box-container {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gift-box-wrapper:hover .gift-box-container {
+  transform: scale(1.06);
+}
+
+@keyframes giftPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  20% {
+    transform: scale(1.05) rotate(-3deg);
+  }
+  40% {
+    transform: scale(1.05) rotate(3deg);
+  }
+  60% {
+    transform: scale(1.05) rotate(-2deg);
+  }
+  80% {
+    transform: scale(1.05) rotate(2deg);
+  }
+}
+
+.animate-gift {
+  animation: giftPulse 2.5s infinite ease-in-out;
+}
+
+/* VIP Ticket Card */
+.vip-ticket {
+  background: radial-gradient(circle at top left, #2d3748, #1a202c 70%, #0f172a);
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 40px rgba(245, 158, 11, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.vip-ticket::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-25deg);
+  animation: ticketShine 5s infinite;
+}
+
+@keyframes ticketShine {
+  0%, 70% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Perforated ticket divider */
+.ticket-divider {
+  position: relative;
+  border-top: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+.ticket-divider::before, .ticket-divider::after {
+  content: '';
+  position: absolute;
+  top: -14px;
+  width: 28px;
+  height: 28px;
+  background: #fdf2f8;
+  border-radius: 50%;
+}
+
+.ticket-divider::before { left: -26px; }
+.ticket-divider::after { right: -26px; }
+
+/* Quiz styles */
+.quiz-option {
+  transition: all 0.25s ease;
+  border: 2px solid #f3f4f6;
+}
+
+.quiz-option:hover {
+  border-color: #f43f5e;
+  background-color: #fff1f2;
+  transform: translateY(-2px);
+}
+
+.quiz-option.correct {
+  border-color: #10b981 !important;
+  background-color: #ecfdf5 !important;
+  color: #065f46 !important;
+}
+
+.quiz-option.wrong {
+  border-color: #f43f5e !important;
+  background-color: #fff1f2 !important;
+  color: #9f1239 !important;
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+/* Floating Audio Player */
+.audio-toggle-btn {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.audio-toggle-btn:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.25);
+}
+
+.audio-equalizer {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.equalizer-bar {
+  width: 3px;
+  background-color: #f43f5e;
+  border-radius: 2px;
+  animation: soundBar 1s infinite alternate ease-in-out;
+}
+
+.equalizer-bar:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+.equalizer-bar:nth-child(2) { height: 14px; animation-delay: 0.3s; }
+.equalizer-bar:nth-child(3) { height: 9px; animation-delay: 0.2s; }
+
+.audio-paused .equalizer-bar {
+  animation: none;
+  height: 4px;
+}
+
+@keyframes soundBar {
+  0% { height: 4px; }
+  100% { height: 14px; }
+}
+
+/* Glassmorphism Card */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Print Styles for the Ticket */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #vip-ticket-modal, #vip-ticket-modal * {
+    visibility: visible;
+  }
+  #vip-ticket-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

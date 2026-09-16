@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sky1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9a9e"/>
+      <stop offset="100%" stop-color="#fecfef"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="600" height="600" fill="url(#sky1)"/>
+  <circle cx="300" cy="220" r="80" fill="#ffffff" opacity="0.4"/>
+  <path d="M300 210 C300 160, 240 150, 240 210 C240 270, 300 330, 300 350 C300 330, 360 270, 360 210 C360 150, 300 160, 300 210 Z" fill="#ff4b72" filter="url(#shadow)"/>
+  <text x="300" y="420" font-family="'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle" filter="url(#shadow)">Le Début de Notre Histoire ✨</text>
+  <text x="300" y="460" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" opacity="0.9">(Remplace par ta photo : photo1.jpg)</text>
+</svg>
