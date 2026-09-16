@@ -110,6 +110,9 @@ function initDynamicContent() {
   const giftLodging = document.getElementById('ticket-lodging');
   const giftLodgingDesc = document.getElementById('ticket-lodging-desc');
   const giftLodgingImg = document.getElementById('ticket-lodging-img');
+  const giftRestaurant = document.getElementById('ticket-restaurant');
+  const giftRestaurantDesc = document.getElementById('ticket-restaurant-desc');
+  const giftRestaurantImg = document.getElementById('ticket-restaurant-img');
   const giftTimeline = document.getElementById('ticket-timeline');
   const giftSweetMsg = document.getElementById('ticket-sweet-msg');
 
@@ -121,6 +124,9 @@ function initDynamicContent() {
   if (giftLodging) giftLodging.textContent = siteConfig.gift.lodging;
   if (giftLodgingDesc) giftLodgingDesc.textContent = siteConfig.gift.lodgingDesc;
   if (giftLodgingImg && siteConfig.gift.lodgingImage) giftLodgingImg.src = siteConfig.gift.lodgingImage;
+  if (giftRestaurant && siteConfig.gift.restaurant) giftRestaurant.textContent = siteConfig.gift.restaurant;
+  if (giftRestaurantDesc && siteConfig.gift.restaurantDesc) giftRestaurantDesc.textContent = siteConfig.gift.restaurantDesc;
+  if (giftRestaurantImg && siteConfig.gift.restaurantImage) giftRestaurantImg.src = siteConfig.gift.restaurantImage;
   if (giftTimeline) giftTimeline.textContent = siteConfig.gift.timelineText;
   if (giftSweetMsg) giftSweetMsg.textContent = siteConfig.gift.sweetMessage;
 
