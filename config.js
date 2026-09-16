@@ -84,10 +84,10 @@ const siteConfig = {
   gift: {
     badge: "Cadeau",
     title: "Une Escapade Magique en Amoureux",
-    destination: "La Vallée des Singes ",
+    destination: "La Vallée des Singes",
     destinationImage: "assets/images/vallee-des-singes.png",
     destinationDesc: "Une journée entre amoureux au cœur de la nature, en totale immersion parmi les autres singes que moi 🐵",
-    lodging: "Une nuit comprise ✨",
+    lodging: "Une nuit comprise 🛌",
     lodgingImage: "assets/images/hotel.png",
     lodgingDesc: "Une chambre d'hôte ou un hôtel situé à une dizaines de minutes du parc pour se reposer, couper du quotidien et passer une tendre soirée en amoureux.",
     restaurant: "Une invitation au restaurant 🍷",
