@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackgroundCanvas();
   initDynamicContent();
   initLoveCounter();
-  initAudioPlayer();
   initTimeline();
   initQuiz();
   initGiftBox();
@@ -39,7 +38,7 @@ function initBackgroundCanvas() {
     reset() {
       this.x = Math.random() * width;
       this.y = height + Math.random() * 50;
-      this.size = Math.random() * 14 + 10; // taille du coeur
+      this.size = Math.random() * 14 + 10;
       this.speedY = Math.random() * 0.8 + 0.4;
       this.speedX = Math.sin(Math.random() * Math.PI) * 0.4 - 0.2;
       this.opacity = Math.random() * 0.4 + 0.15;
@@ -64,7 +63,6 @@ function initBackgroundCanvas() {
       ctx.globalAlpha = this.opacity;
       ctx.fillStyle = this.color;
       
-      // Dessin d'un coeur mignon
       const s = this.size / 20;
       ctx.scale(s, s);
       ctx.beginPath();
@@ -78,7 +76,7 @@ function initBackgroundCanvas() {
 
   for (let i = 0; i < particleCount; i++) {
     const p = new Particle();
-    p.y = Math.random() * height; // disperser au départ
+    p.y = Math.random() * height;
     particles.push(p);
   }
 
@@ -111,12 +109,12 @@ function initDynamicContent() {
   const heroSubtitle = document.getElementById('hero-subtitle');
   const heroBtn = document.getElementById('hero-cta-btn');
 
-  if (heroBadge) heroBadge.textContent = siteConfig.hero.badge;
-  if (heroTitle) heroTitle.textContent = siteConfig.hero.title;
-  if (heroSubtitle) heroSubtitle.textContent = siteConfig.hero.subtitle;
-  if (heroBtn) heroBtn.textContent = siteConfig.hero.buttonText;
+  if (heroBadge && siteConfig.hero.badge) heroBadge.textContent = siteConfig.hero.badge;
+  if (heroTitle && siteConfig.hero.title) heroTitle.innerHTML = siteConfig.hero.title;
+  if (heroSubtitle && siteConfig.hero.subtitle) heroSubtitle.textContent = siteConfig.hero.subtitle;
+  if (heroBtn && siteConfig.hero.buttonText) heroBtn.textContent = siteConfig.hero.buttonText;
 
-  // Gift details
+  // Détails du Cadeau
   const giftBadge = document.getElementById('ticket-badge');
   const giftTitle = document.getElementById('ticket-title');
   const giftDest = document.getElementById('ticket-destination');
@@ -139,7 +137,7 @@ function initDynamicContent() {
   if (giftTimeline) giftTimeline.textContent = siteConfig.gift.timelineText;
   if (giftSweetMsg) giftSweetMsg.textContent = siteConfig.gift.sweetMessage;
 
-  // Included list in ticket
+  // Prestations incluses dans le ticket VIP
   const listContainer = document.getElementById('ticket-included-list');
   if (listContainer && siteConfig.gift.includedList) {
     listContainer.innerHTML = siteConfig.gift.includedList
@@ -149,27 +147,19 @@ function initDynamicContent() {
 }
 
 // -----------------------------------------------------------------------------
-// 3. COMPTEUR D'AMOUR & SOUVENIRS
+// 3. COMPTEUR D'AMOUR (JOURS UNIQUEMENT)
 // -----------------------------------------------------------------------------
 function initLoveCounter() {
   if (typeof siteConfig === 'undefined' || !siteConfig.relationshipStartDate) return;
 
   const startDate = new Date(siteConfig.relationshipStartDate);
   const daysEl = document.getElementById('counter-days');
-  const hoursEl = document.getElementById('counter-hours');
-  const minutesEl = document.getElementById('counter-minutes');
 
   function update() {
     const now = new Date();
     const diffTime = Math.max(0, now - startDate);
-    
     const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diffTime / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diffTime / 1000 / 60) % 60);
-
     if (daysEl) daysEl.textContent = days.toLocaleString('fr-FR');
-    if (hoursEl) hoursEl.textContent = hours.toLocaleString('fr-FR');
-    if (minutesEl) minutesEl.textContent = minutes.toLocaleString('fr-FR');
   }
 
   update();
@@ -177,76 +167,13 @@ function initLoveCounter() {
 }
 
 // -----------------------------------------------------------------------------
-// 4. LECTEUR DE MUSIQUE DOUCE
-// -----------------------------------------------------------------------------
-function initAudioPlayer() {
-  const toggleBtn = document.getElementById('audio-toggle');
-  const audioEl = document.getElementById('bg-audio');
-  const labelEl = document.getElementById('audio-label');
-
-  if (!toggleBtn || !audioEl) return;
-
-  if (siteConfig && siteConfig.music && siteConfig.music.audioSrc) {
-    audioEl.src = siteConfig.music.audioSrc;
-  }
-
-  let isPlaying = false;
-
-  toggleBtn.addEventListener('click', () => {
-    if (isPlaying) {
-      audioEl.pause();
-      toggleBtn.classList.add('audio-paused');
-      if (labelEl) labelEl.textContent = 'Musique en pause';
-      isPlaying = false;
-    } else {
-      audioEl.play().then(() => {
-        toggleBtn.classList.remove('audio-paused');
-        if (labelEl) labelEl.textContent = 'Musique en cours...';
-        isPlaying = true;
-      }).catch(err => {
-        console.log("Lecture audio requiert une interaction utilisateur ou fichier absent", err);
-        // Créer un petit son doux avec l'API Web Audio si le MP3 n'est pas encore présent
-        playCelebrationChime();
-        if (labelEl) labelEl.textContent = 'Mélodie magique ✨';
-      });
-    }
-  });
-}
-
-// Chime doux via Web Audio API si l'utilisateur n'a pas encore ajouté de MP3
-function playCelebrationChime() {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    const ctx = new AudioContext();
-    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
-    
-    notes.forEach((freq, idx) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = freq;
-      gain.gain.setValueAtTime(0.001, ctx.currentTime + idx * 0.12);
-      gain.gain.exponentialRampToValueAtTime(0.2, ctx.currentTime + idx * 0.12 + 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.12 + 1.2);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(ctx.currentTime + idx * 0.12);
-      osc.stop(ctx.currentTime + idx * 0.12 + 1.3);
-    });
-  } catch(e) {
-    console.log("Audio synthesis not available", e);
-  }
-}
-
-// -----------------------------------------------------------------------------
-// 5. TIMELINE & POLAROIDS
+// 4. TIMELINE & POLAROIDS
 // -----------------------------------------------------------------------------
 function initTimeline() {
   const container = document.getElementById('timeline-container');
   if (!container || typeof siteConfig === 'undefined') return;
 
-  container.innerHTML = siteConfig.timeline.map((item, index) => {
+  container.innerHTML = siteConfig.timeline.map((item) => {
     return `
       <div class="polaroid-card flex flex-col items-center justify-between" style="transform: rotate(${item.rotation || '0deg'});">
         <div class="polaroid-tape"></div>
@@ -265,7 +192,7 @@ function initTimeline() {
 }
 
 // -----------------------------------------------------------------------------
-// 6. MINI-QUIZ COMPLICE
+// 5. MINI-QUIZ COMPLICE (CONDITION STRICTE POUR AFFICHER LE CADEAU)
 // -----------------------------------------------------------------------------
 let currentQuestionIndex = 0;
 let quizCompleted = false;
@@ -283,36 +210,32 @@ function renderQuestion() {
   const totalQuestions = siteConfig.quiz.length;
 
   if (currentQuestionIndex >= totalQuestions) {
-    // Quiz terminé !
     showQuizFinished();
     return;
   }
 
   const currentQ = siteConfig.quiz[currentQuestionIndex];
-  const progressPercent = ((currentQuestionIndex) / totalQuestions) * 100;
+  const progressPercent = (currentQuestionIndex / totalQuestions) * 100;
 
   if (progressEl) progressEl.style.width = `${progressPercent}%`;
   if (stepEl) stepEl.textContent = `Question ${currentQuestionIndex + 1} / ${totalQuestions}`;
 
-  const questionTitle = document.getElementById('quiz-question-title');
-  const optionsContainer = document.getElementById('quiz-options-container');
-  const feedbackContainer = document.getElementById('quiz-feedback');
-
-  if (questionTitle) questionTitle.textContent = currentQ.question;
-  if (feedbackContainer) {
-    feedbackContainer.classList.add('hidden');
-    feedbackContainer.innerHTML = '';
-  }
-
-  if (optionsContainer) {
-    optionsContainer.innerHTML = currentQ.options.map((opt, idx) => {
-      return `
-        <button onclick="handleOptionClick(${idx})" class="quiz-option w-full text-left p-4 rounded-xl bg-white text-gray-800 font-medium text-sm md:text-base flex items-center justify-between shadow-sm">
-          <span>${opt.text}</span>
-          <span class="text-xl opacity-60">👉</span>
-        </button>
-      `;
-    }).join('');
+  // S'assurer que le squelette HTML du quiz est en place
+  if (quizCard) {
+    quizCard.innerHTML = `
+      <h3 id="quiz-question-title" class="font-serif text-xl sm:text-2xl font-bold text-gray-800 text-center">
+        ${currentQ.question}
+      </h3>
+      <div id="quiz-options-container" class="space-y-3">
+        ${currentQ.options.map((opt, idx) => `
+          <button onclick="handleOptionClick(${idx})" class="quiz-option w-full text-left p-4 rounded-xl bg-white text-gray-800 font-medium text-sm md:text-base flex items-center justify-between shadow-sm">
+            <span>${opt.text}</span>
+            <span class="text-xl opacity-60">👉</span>
+          </button>
+        `).join('')}
+      </div>
+      <div id="quiz-feedback" class="hidden"></div>
+    `;
   }
 }
 
@@ -322,38 +245,68 @@ window.handleOptionClick = function(optionIndex) {
   const buttons = document.querySelectorAll('.quiz-option');
   const feedbackContainer = document.getElementById('quiz-feedback');
 
-  // Désactiver les boutons temporairement
+  // Désactiver les boutons pour éviter les doubles clics
   buttons.forEach(b => b.disabled = true);
 
   if (buttons[optionIndex]) {
     if (option.isCorrect) {
       buttons[optionIndex].classList.add('correct');
-      playCelebrationChime();
     } else {
       buttons[optionIndex].classList.add('wrong');
     }
   }
 
-  // Afficher le message d'ambiance
   if (feedbackContainer) {
     feedbackContainer.classList.remove('hidden');
-    feedbackContainer.innerHTML = `
-      <div class="p-4 rounded-xl ${option.isCorrect ? 'bg-emerald-50 border border-emerald-200 text-emerald-800' : 'bg-rose-50 border border-rose-200 text-rose-800'} animate-fade-in flex flex-col md:flex-row items-center justify-between gap-3">
-        <div class="flex items-center space-x-2">
-          <span class="text-2xl">${option.isCorrect ? '🎉' : '😄'}</span>
-          <p class="font-medium text-sm md:text-base">${option.feedback}</p>
+
+    if (option.isCorrect) {
+      // RÉPONSE CORRECTE : On permet de passer à la question suivante
+      const isLastQuestion = currentQuestionIndex === siteConfig.quiz.length - 1;
+      feedbackContainer.innerHTML = `
+        <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 animate-fade-in flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+          <div class="flex items-center space-x-2 text-center sm:text-left">
+            <span class="text-2xl">🎉</span>
+            <p class="font-medium text-sm md:text-base">${option.feedback}</p>
+          </div>
+          <button onclick="nextQuestion()" class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-xl font-bold text-sm shadow-md transition-all whitespace-nowrap cursor-pointer">
+            ${isLastQuestion ? 'Débloquer mon cadeau ! 🔓🎁' : 'Question suivante ➔'}
+          </button>
         </div>
-        <button onclick="nextQuestion()" class="px-5 py-2 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white rounded-lg font-semibold text-sm shadow-md transition-all whitespace-nowrap">
-          ${currentQuestionIndex === siteConfig.quiz.length - 1 ? 'Voir le résultat 🔓' : 'Suivant ➔'}
-        </button>
-      </div>
-    `;
+      `;
+    } else {
+      // MAUVAISE RÉPONSE : On impose de recommencer depuis le début pour voir le cadeau !
+      feedbackContainer.innerHTML = `
+        <div class="p-5 rounded-xl bg-rose-50 border-2 border-rose-300 text-rose-900 animate-fade-in flex flex-col items-center text-center gap-3 shadow-md">
+          <div class="space-y-1">
+            <span class="text-3xl inline-block mb-1">🙈 Oups !</span>
+            <p class="font-bold text-base text-rose-700">${option.feedback}</p>
+            <p class="text-xs text-rose-600 font-medium">Pour débloquer ton cadeau surprise, tu dois faire un sans-faute !</p>
+          </div>
+          <button onclick="restartQuiz()" class="px-6 py-2.5 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center space-x-2 cursor-pointer mt-1">
+            <span>🔄</span>
+            <span>Recommencer le test</span>
+          </button>
+        </div>
+      `;
+    }
   }
 };
 
 window.nextQuestion = function() {
   currentQuestionIndex++;
   renderQuestion();
+};
+
+window.restartQuiz = function() {
+  currentQuestionIndex = 0;
+  const progressEl = document.getElementById('quiz-progress-bar');
+  if (progressEl) progressEl.style.width = '0%';
+  renderQuestion();
+  
+  const quizSection = document.getElementById('quiz-section');
+  if (quizSection) {
+    quizSection.scrollIntoView({ behavior: 'smooth' });
+  }
 };
 
 function showQuizFinished() {
@@ -371,30 +324,33 @@ function showQuizFinished() {
         <div class="inline-flex p-4 bg-rose-100 rounded-full text-4xl animate-bounce">
           🔓
         </div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-gray-800">Toutes les questions sont validées !</h3>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-gray-800">100% de bonnes réponses ! 🏆</h3>
         <p class="text-gray-600 max-w-md mx-auto text-sm md:text-base">
-          Tu as réussi le test haut la main mon amour ! Le cadenas de ta surprise est maintenant officiellement déverrouillé...
+          Bravo mon amour, tu as réussi le test haut la main ! Ton cadeau d'anniversaire vient officiellement d'apparaître ci-dessous...
         </p>
         <div>
           <a href="#gift-section" class="inline-block px-8 py-3.5 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all">
-            Ouvrir la boîte cadeau 🎁
+            Découvrir ma boîte cadeau 🎁
           </a>
         </div>
       </div>
     `;
   }
 
-  // Activer visuellement la boîte cadeau
+  // RÉVÉLER LA SECTION CADEAU (UNIQUEMENT APRÈS LA RÉUSSITE COMPLÈTE DU QUIZ)
   const giftSection = document.getElementById('gift-section');
   if (giftSection) {
-    giftSection.classList.remove('opacity-60', 'pointer-events-none');
+    giftSection.classList.remove('hidden');
+    setTimeout(() => {
+      giftSection.scrollIntoView({ behavior: 'smooth' });
+    }, 400);
   }
 
   triggerConfetti();
 }
 
 // -----------------------------------------------------------------------------
-// 7. BOÎTE CADEAU MYSTÈRE & GRAND DÉVOILEMENT
+// 6. BOÎTE CADEAU MYSTÈRE & GRAND DÉVOILEMENT
 // -----------------------------------------------------------------------------
 function initGiftBox() {
   const giftBox = document.getElementById('interactive-gift-box');
@@ -422,15 +378,15 @@ function initGiftBox() {
 }
 
 function openGiftSurprise() {
+  // Sécurité : ne s'ouvre que si le quiz a été complété sans faute
+  if (!quizCompleted) return;
+
   const modal = document.getElementById('vip-ticket-modal');
   
-  // Pluie de confettis intense !
   triggerBigConfetti();
-  playCelebrationChime();
 
   if (modal) {
     modal.classList.remove('hidden');
-    // Scroll au modal
     modal.scrollIntoView({ behavior: 'smooth' });
   }
 }

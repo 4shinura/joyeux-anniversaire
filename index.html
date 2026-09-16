@@ -53,21 +53,11 @@
       </div>
 
       <!-- Compteur d'amour (Jours ensemble) -->
-      <div class="glass-panel p-6 rounded-3xl max-w-2xl mx-auto shadow-sm">
-        <p class="text-xs font-bold uppercase tracking-wider text-rose-500 mb-4">Notre aventure à deux</p>
-        <div class="grid grid-cols-3 gap-3 text-center">
-          <div class="bg-white/80 rounded-2xl p-3 md:p-4 shadow-sm">
-            <span id="counter-days" class="block font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">365+</span>
-            <span class="text-xs text-gray-500 font-medium">Jours d'amour</span>
-          </div>
-          <div class="bg-white/80 rounded-2xl p-3 md:p-4 shadow-sm">
-            <span id="counter-hours" class="block font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-rose-600">8 760+</span>
-            <span class="text-xs text-gray-500 font-medium">Heures de rires</span>
-          </div>
-          <div class="bg-white/80 rounded-2xl p-3 md:p-4 shadow-sm">
-            <span id="counter-minutes" class="block font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-pink-600">∞</span>
-            <span class="text-xs text-gray-500 font-medium">Souvenirs magiques</span>
-          </div>
+      <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-md mx-auto shadow-sm text-center">
+        <p class="text-xs font-bold uppercase tracking-wider text-rose-500 mb-2">Notre aventure à deux</p>
+        <div class="bg-white/80 rounded-2xl p-5 shadow-sm inline-block w-full">
+          <span id="counter-days" class="block font-serif text-4xl sm:text-5xl font-extrabold text-gradient mb-1">365+</span>
+          <span class="text-xs sm:text-sm text-gray-600 font-medium">Jours d'amour partagés 💕</span>
         </div>
       </div>
 
@@ -144,8 +134,9 @@
 
     <!-- =====================================================================
          SECTION 4 : LA BOÎTE CADEAU & LE GRAND DÉVOILEMENT
+         (Affichée UNIQUEMENT après validation complète du quiz)
          ===================================================================== -->
-    <section id="gift-section" class="scroll-mt-12 space-y-8 text-center transition-all duration-500">
+    <section id="gift-section" class="scroll-mt-12 space-y-8 text-center transition-all duration-700 hidden">
       
       <div class="space-y-3">
         <span class="text-xs font-bold uppercase tracking-wider text-rose-500">Le Grand Moment</span>

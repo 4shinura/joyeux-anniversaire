@@ -225,48 +225,22 @@ body {
   40%, 80% { transform: translateX(6px); }
 }
 
-/* Floating Audio Player */
-.audio-toggle-btn {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(244, 63, 94, 0.25);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+/* Animations pour le Quiz et le Cadeau */
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.audio-toggle-btn:hover {
-  transform: scale(1.08);
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.25);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.audio-equalizer {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 14px;
-}
-
-.equalizer-bar {
-  width: 3px;
-  background-color: #f43f5e;
-  border-radius: 2px;
-  animation: soundBar 1s infinite alternate ease-in-out;
-}
-
-.equalizer-bar:nth-child(1) { height: 6px; animation-delay: 0.1s; }
-.equalizer-bar:nth-child(2) { height: 14px; animation-delay: 0.3s; }
-.equalizer-bar:nth-child(3) { height: 9px; animation-delay: 0.2s; }
-
-.audio-paused .equalizer-bar {
-  animation: none;
-  height: 4px;
-}
-
-@keyframes soundBar {
-  0% { height: 4px; }
-  100% { height: 14px; }
-}
 
 /* Glassmorphism Card */
 .glass-panel {

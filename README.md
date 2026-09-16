@@ -9,20 +9,19 @@ Un site web romantique, interactif et festif créé spécialement pour célébre
 1. **Ambiance Romantique & Festive** :
    - Pluie de cœurs et d'étincelles douces en arrière-plan (Canvas).
    - Couleurs douces et chaleureuses (rose poudré, or champagne, blanc crème).
-   - Lecteur audio discret avec égaliseur animé pour votre chanson à deux.
    - 100% adapté aux smartphones (iPhone/Android) et ordinateurs.
 
 2. **Compteur d'Amour & Rétrospective** :
-   - Compteur automatique du nombre de jours passés ensemble depuis votre rencontre.
+   - Compteur automatique du nombre de jours partagés ensemble depuis votre rencontre.
    - Galerie de 4 clichés façon **Polaroids réalistes** avec effet d'inclinaison et petites anecdotes.
 
-3. **Mini-Quiz Complice & Blagues Privées** :
-   - 4 questions interactives pour tester votre complicité et rigoler ensemble.
+3. **Mini-Quiz Complice & Déverrouillage Strict du Cadeau** :
+   - Questions interactives pour tester votre complicité et rigoler ensemble.
    - Réponses personnalisées avec des feedbacks humoristiques.
-   - Jauge de déverrouillage pour ouvrir l'accès au cadeau.
+   - **Règle du jeu** : Il faut obligatoirement répondre juste à chaque question pour que la boîte cadeau apparaisse ! En cas d'erreur, elle doit recommencer le test.
 
 4. **Le Grand Dévoilement du Cadeau (Climax)** :
-   - Boîte cadeau interactive avec ruban doré et animation pulsante.
+   - Boîte cadeau interactive qui n'apparaît qu'une fois le quiz 100% réussi.
    - Explosion de feux d'artifice de confettis au clic !
    - **Billet d'Évasion VIP / Boarding Pass** détaillant le week-end :
      - 🐒 **La Vallée des Singes** (immersion nature avec 450+ primates en liberté).
@@ -38,37 +37,19 @@ Tout a été conçu pour être modifiable en quelques secondes sans toucher au c
 
 ### 1. Remplacer les photos par les vôtres
 Dépose tes photos préférées dans le dossier `assets/images/` :
-- `photo1.jpg` : Vos débuts
-- `photo2.jpg` : Un fou rire / moment drôle
-- `photo3.jpg` : Une sortie / voyage
-- `photo4.jpg` : Une jolie photo d'elle ou de vous deux
-*(Tu peux aussi mettre des photos réelles de la Vallée des Singes ou de votre chambre d'hôte !)*
+- `image1.png`, `image2.png`, `image3.png`, `image4.png`
+*(ou au format `.jpg` de ton choix)*
 
-Ouvre ensuite `config.js` pour ajuster les noms de fichiers si nécessaire :
-```javascript
-timeline: [
-  {
-    title: "Le tout début",
-    subtitle: "Le coup de foudre",
-    caption: "Là où tout a commencé...",
-    image: "assets/images/photo1.jpg", // Mets le nom de ton image ici
-    ...
-  }
-]
-```
+Ouvre ensuite `config.js` pour ajuster les noms de fichiers si nécessaire.
 
-### 2. Ajouter votre chanson douce (Optionnel)
-1. Télécharge votre chanson préférée au format `.mp3`.
-2. Dépose-la dans `assets/audio/notre-chanson.mp3`.
-3. Le lecteur audio sur le site jouera automatiquement ce morceau quand elle cliquera sur le bouton musical !
-
-### 3. Modifier les textes, les blagues et le quiz
+### 2. Modifier les textes, les blagues et le quiz
 Ouvre le fichier [`config.js`](config.js) avec n'importe quel éditeur de texte (Bloc-notes, VS Code, etc.).
 Tu pourras modifier :
 - `partnerName` : Ton prénom ou surnom.
 - `relationshipStartDate` : La date exacte de votre rencontre (`"AAAA-MM-JJ"`) pour que le compteur soit parfait au jour près.
 - `quiz` : Les questions, réponses et messages humoristiques.
 - `gift` : Le message d'amour final ou les petites attentions incluses.
+
 
 ---
 
