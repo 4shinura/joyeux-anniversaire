@@ -179,7 +179,6 @@ function initTimeline() {
         <div class="polaroid-tape"></div>
         <div class="w-full aspect-square rounded overflow-hidden bg-gray-100 mb-3 shadow-inner relative group">
           <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='assets/images/photo1.svg'">
-          <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-xs px-2.5 py-1 rounded-full font-medium text-rose-600 shadow-sm">${item.tag}</span>
         </div>
         <div class="w-full text-center px-1">
           <h4 class="font-serif font-bold text-lg text-gray-800">${item.title}</h4>
@@ -405,7 +404,7 @@ function triggerConfetti() {
 
 function triggerBigConfetti() {
   if (typeof confetti === 'function') {
-    const end = Date.now() + 2.5 * 1000;
+    const end = Date.now() + 1 * 1000;
     const colors = ['#f43f5e', '#f59e0b', '#10b981', '#ec4899', '#ffffff'];
 
     (function frame() {

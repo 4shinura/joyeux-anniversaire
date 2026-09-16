@@ -6,12 +6,10 @@
 
 const siteConfig = {
   // Informations Générales
-  partnerName: "Ton amoureux", // Tu peux remplacer par ton prénom !
+  partnerName: "Ton amoureux", 
   recipientName: "Camille",
   age: 18,
   
-  // Date de début de votre relation (Format: AAAA-MM-JJ) pour le compteur de jours
-  // Modifie la date ci-dessous pour que le compteur soit exact !
   relationshipStartDate: "2025-08-27",
 
   // 1. En-tête / Hero
@@ -29,7 +27,6 @@ const siteConfig = {
       subtitle: "Ton premier anniversaire partagé ensemble",
       caption: "Un gâteau de fortune.. mais un gâteau quand même 😇",
       image: "assets/images/image1.png",
-      tag: "Souvenir #1",
       rotation: "-1deg"
     },
     {
@@ -37,7 +34,6 @@ const siteConfig = {
       subtitle: "Une complicité naissante",
       caption: "Ce petit cadeau qui ta grandement fais plaisir et qui reste dans notre mémoire",
       image: "assets/images/image2.png",
-      tag: "Nos délires",
       rotation: "3deg"
     },
     {
@@ -45,7 +41,6 @@ const siteConfig = {
       subtitle: "Un coin amménagé",
       caption: "Notre amour passe aussi par des sessions des Bridgerton en pleine air 🌞",
       image: "assets/images/image3.png",
-      tag: "Aventure",
       rotation: "-3deg"
     },
     {
@@ -53,7 +48,6 @@ const siteConfig = {
       subtitle: "Un peu bizarre parfois",
       caption: "C'est en s'aimant comme des fous qu'on en deviens des petits fous fous (de Sochaux évidemment !)",
       image: "assets/images/image4.png",
-      tag: "Pour toujours",
       rotation: "2deg"
     }
   ],
@@ -63,58 +57,58 @@ const siteConfig = {
   quiz: [
     {
       id: 1,
-      question: "Ça fait combien de temps qu'on s'aime et qu'on s'amuse ensemble ?",
+      question: "Quelle est la date exacte de notre premier  ?",
       options: [
-        { text: "Environ 2 semaines et demi...", isCorrect: false, feedback: "Euh, tu es sûre ? Je crois que tu as oublié quelques mois là ! 😂" },
-        { text: "1 an et quelques (et chaque jour est magique) 💕", isCorrect: true, feedback: "Bingo ! Déjà plus d'un an de bonheur à tes côtés !" },
-        { text: "Depuis le Jurassique avec les dinosaures 🦖", isCorrect: false, feedback: "Haha, on est vieux mais pas à ce point !" }
+        { text: "17 août 2026", isCorrect: false, feedback: "Euh, tu es sûre ? Je crois que c'est la date officieuse ça !" },
+        { text: "27 août 2026", isCorrect: false, feedback: "Mmmmmh c'est dommage, tu es tombé dans le piège" },
+        { text: "29 août 2026", isCorrect: true, feedback: "Bingo ! Déjà plus d'un an de bonheur à tes côtés !" }
       ]
     },
     {
       id: 2,
-      question: "Honnêtement... qui est le plus long à se préparer avant de sortir ?",
+      question: "Est ce que tu pourrais m'échanger pour 1kg de nougat ?",
       options: [
-        { text: "Moi (Camille) évidemment, la perfection prend du temps 💅", isCorrect: true, feedback: "Exactement ! Mais le résultat vaut toujours l'attente ✨" },
-        { text: "Toi (mon copain), sans hésitation !", isCorrect: false, feedback: "Menteuse ! J'enfile un jean et je suis prêt en 3 minutes chrono ! 😜" },
-        { text: "On est tous les deux en retard de toute façon ⏰", isCorrect: true, feedback: "C'est pas faux... la ponctualité c'est surfait !" }
+        { text: "Non, jamais de la vie je ferai ça !", isCorrect: false, feedback: "Menteuse ! Je sais que ça te tenterai un peu.." },
+        { text: "Non, mais ça reste un 1kg de nougat quand même..", isCorrect: true, feedback: "Merci ! Je sais que ça te tente mais je pourrai t'en acheter" },
+        { text: "Oui, même pour un seul morceau de nougat 😈", isCorrect: false, feedback: "Oooooh.. Je suis triste alors.." }
       ]
     },
     {
       id: 3,
-      question: "Quelle est notre activité préférée lors d'un week-end parfait ?",
+      question: "Quelle série est la plus importante / iconique dans notre relation ?",
       options: [
-        { text: "Faire la sieste et manger des snacks devant une série 🍿", isCorrect: true, feedback: "Le classique indétrônable... mais attends de voir ce qui t'attend !" },
-        { text: "Partir en escapade loin de tout et se ressourcer 🌿", isCorrect: true, feedback: "Mmh... tu brûles ! Tiens-toi bien pour la suite..." },
-        { text: "Faire le grand ménage de printemps un dimanche matin 🧹", isCorrect: false, feedback: "Absolument jamais de la vie ! 😂" }
+        { text: "Manifest", isCorrect: true, feedback: "Le classique... mais c'est pas à celle-ci que je pensais" },
+        { text: "La Chronique des Bridgerton", isCorrect: true, feedback: "OUI ! Faut dire que j'ai beaucoup aimé au final 🙈" },
+        { text: "La Reine Charlotte : Un chapitre Bridgerton", isCorrect: false, feedback: "Mmh... tu brûles, c'est presque ça ! " }
       ]
     },
     {
       id: 4,
       question: "Dernière question : qu'est-ce qui t'attend pour tes 18 ans ?",
       options: [
-        { text: "Une paire de chaussettes et un paquet de bonbons 🧦", isCorrect: false, feedback: "Tu mérites quand même un peu mieux pour ta majorité !" },
-        { text: "Un week-end surprise magique rien que tous les deux 🎁", isCorrect: true, feedback: "C'est validé à 100% ! Découvrons ça tout de suite..." }
+        { text: "Quelques bisous et un paquet de bonbons 🧦", isCorrect: false, feedback: "Tu mérites quand même un peu mieux pour ta majorité !" },
+        { text: "Une surprise que tu vas apprécier 🎁", isCorrect: true, feedback: "C'est validé à 100%, découvrons ça tout de suite !" }
       ]
     }
   ],
 
   // 4. Dévoilement du Cadeau
   gift: {
-    badge: "Passeport Évasion VIP 18 Ans",
+    badge: "Cadeau",
     title: "Une Escapade Magique en Amoureux",
-    destination: "La Vallée des Singes 🐒🌴",
+    destination: "La Vallée des Singes ",
     destinationImage: "assets/images/monkey-park.svg",
-    destinationDesc: "Une journée d'émerveillement au cœur de la nature, en totale immersion parmi plus de 450 primates en liberté. Prépare-toi à voir des lémuriens curieux, des grands singes fascinants et des paysages magnifiques !",
-    lodging: "Nuitée en Chambre d'Hôte Cocooning 🏡✨",
+    destinationDesc: "Une journée entre amoureux au cœur de la nature, en totale immersion parmi les autres singes que moi 🐵",
+    lodging: "Une nuit comprise ✨",
     lodgingImage: "assets/images/bed-breakfast.svg",
-    lodgingDesc: "Un charmant havre de paix situé à seulement 10 minutes du parc, pour se reposer, profiter du calme et passer une délicieuse soirée cocooning à deux.",
+    lodgingDesc: "Une chambre d'hôte ou un hôtel situé à une dizaines de minutes du parc pour se reposer, couper du quotidien et passer une tendre soirée en amoureux.",
     timelineText: "À programmer ensemble avant le week-end du 18 octobre inclus !",
-    sweetMessage: "Pour tes 18 ans, je voulais t'offrir un moment inoubliable, hors du temps, pour rire, s'émerveiller et profiter rien que tous les deux. Joyeux 18 ans mon amour ! ❤️",
+    sweetMessage: "Pour tes 18 ans, je voulais t'offrir un moment qui te tiens à coeur, pour s'émerveiller et profiter rien que tous les deux. Joyeux anniversaire mon amour ! ❤️",
     includedList: [
       "2 entrées pour une journée complète à la Vallée des Singes",
-      "1 nuitée pour 2 personnes en chambre d'hôte de charme à 10 min",
-      "Petit-déjeuner gourmand & moment de détente absolue",
-      "Tous les souvenirs, les fous rires et les câlins inclus !"
+      "1 nuitée pour 2 personnes en chambre d'hôte ou hôtel non loin",
+      "1 invitation au restaurant",
+      "Tous pleins de bisous avec les câlins inclus !"
     ]
   }
 };
