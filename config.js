@@ -12,57 +12,47 @@ const siteConfig = {
   
   // Date de début de votre relation (Format: AAAA-MM-JJ) pour le compteur de jours
   // Modifie la date ci-dessous pour que le compteur soit exact !
-  relationshipStartDate: "2025-05-15",
-
-  // Musique de fond (optionnelle)
-  // Mets un fichier audio mp3 dans 'assets/audio/notre-chanson.mp3'
-  music: {
-    enabled: true,
-    audioSrc: "assets/audio/notre-chanson.mp3",
-    title: "Notre Chanson Douce"
-  },
+  relationshipStartDate: "2025-08-27",
 
   // 1. En-tête / Hero
   hero: {
-    badge: "✨ 18 Ans & Tellement de Bonheur ✨",
-    title: "Joyeux 18ème Anniversaire Camille !",
-    subtitle: "Déjà plus d'un an qu'on partage nos rires, nos délires et nos plus beaux moments. Aujourd'hui, c'est ta journée... et j'ai une grande surprise pour toi.",
+    badge: "❤️ 18 Ans de mon amoureuse 💃",
+    title: "Joyeux Anniversaire Camille !",
+    subtitle: "Déjà plus d'un an qu'on partage nos délires, notre amour et de beaux moments. Aujourd'hui, c'est ta journée... et j'ai une surprise pour toi.",
     buttonText: "Découvrir la surprise 💖"
   },
 
   // 2. Rétrospective & Galerie Souvenirs
-  // Par défaut, nous utilisons des visuels temporaires (.svg).
-  // Tu peux les remplacer par vos vraies photos (ex: 'assets/images/photo1.jpg') !
   timeline: [
     {
-      title: "Le tout début",
-      subtitle: "Le coup de foudre",
-      caption: "Là où tout a commencé... le début d'une aventure qui ne fait que grandir.",
-      image: "assets/images/photo1.svg",
+      title: "Il y a un an..",
+      subtitle: "Ton premier anniversaire partagé ensemble",
+      caption: "Un gâteau de fortune.. mais un gâteau quand même 😇",
+      image: "assets/images/image1.png",
       tag: "Souvenir #1",
-      rotation: "-2deg"
+      rotation: "-1deg"
     },
     {
-      title: "Nos petits moments volés",
-      subtitle: "Fous rires & complicité",
-      caption: "Ces petites soirées et après-midis simples où on ne voit jamais le temps passer.",
-      image: "assets/images/photo2.svg",
+      title: "Le Parc Oriental",
+      subtitle: "Une complicité naissante",
+      caption: "Ce petit cadeau qui ta grandement fais plaisir et qui reste dans notre mémoire",
+      image: "assets/images/image2.png",
       tag: "Nos délires",
       rotation: "3deg"
     },
     {
-      title: "Nos escapades à deux",
-      subtitle: "Toujours partant(e)s",
-      caption: "Découvrir de nouveaux endroits main dans la main, le meilleur des programmes.",
-      image: "assets/images/photo3.svg",
+      title: "Des petits moments",
+      subtitle: "Un coin amménagé",
+      caption: "Notre amour passe aussi par des sessions des Bridgerton en pleine air 🌞",
+      image: "assets/images/image3.png",
       tag: "Aventure",
       rotation: "-3deg"
     },
     {
-      title: "Plus d'un an avec toi",
-      subtitle: "Et ce n'est que le début",
-      caption: "Merci d'illuminer chaque journée avec ton sourire et ta douceur.",
-      image: "assets/images/photo4.svg",
+      title: "Un amour sincère",
+      subtitle: "Un peu bizarre parfois",
+      caption: "C'est en s'aimant comme des fous qu'on en deviens des petits fous fous (de Sochaux évidemment !)",
+      image: "assets/images/image4.png",
       tag: "Pour toujours",
       rotation: "2deg"
     }
