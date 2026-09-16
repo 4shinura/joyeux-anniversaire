@@ -302,7 +302,7 @@ function showQuizFinished() {
         </p>
         <div>
           <a href="#gift-section" class="inline-block px-8 py-3.5 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all">
-            Découvrir ma boîte cadeau 🎁
+            Découvre ton cadeau 🎁
           </a>
         </div>
       </div>

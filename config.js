@@ -46,7 +46,7 @@ const siteConfig = {
   quiz: [
     {
       id: 1,
-      question: "Quelle est la date exacte de notre premier  ?",
+      question: "Quand est-ce que l'on s'est officielement mis ensemble ?",
       options: [
         { text: "17 août 2026", isCorrect: false, feedback: "Euh, tu es sûre ? Je crois que c'est la date officieuse ça !" },
         { text: "27 août 2026", isCorrect: false, feedback: "Mmmmmh c'est dommage, tu es tombé dans le piège" },
